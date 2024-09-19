@@ -91,10 +91,10 @@ def test_kolmogorov_smirnov(data, ks_alpha):
 
     sample1, sample2 = data
 
-    print(data.isnull().all())
+    #print(data.isnull().all())
 
-    print(sample1.shape)
-    print(sample2.shape)
+    #print(sample1.shape)
+    #print(sample2.shape)
 
     columns = [
         "danceability",
