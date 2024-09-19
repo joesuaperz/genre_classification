@@ -33,6 +33,7 @@ def go(args):
 
     filename = "processed_data.csv"
     df.to_csv(filename)
+    logger.info(df.isnull().all())
     print(df.notna().shape)
     df = df.dropna()
     print(df.shape)
