@@ -34,7 +34,7 @@ def go(args):
     filename = "processed_data.csv"
     #df.to_csv(filename)
     logger.info(df.shape)
-    df.dropna(how='any')
+    df = df.dropna(how='any')
     logger.info(df.shape)
     #logger.info(df.isnull().all())
     #logger.info(df['text_feature'].isna())
