@@ -32,13 +32,16 @@ def go(args):
     df['text_feature'] = df['title'] + ' ' + df['song_name']
 
     filename = "processed_data.csv"
-    df.to_csv(filename)
+    #df.to_csv(filename)
     logger.info(df.shape)
-    logger.info(df.isnull().all())
-    logger.info(df['text_feature'].isna())
-    print(df.notna().shape)
-    df = df.dropna()
-    print(df.shape)
+    df.dropna(how='any')
+    logger.info(df.shape)
+    #logger.info(df.isnull().all())
+    #logger.info(df['text_feature'].isna())
+    #print(df.notna().shape)
+    #df = df.dropna()
+    #print(df.shape)
+    df.to_csv(filename)
 
     artifact = wandb.Artifact(
         name=args.artifact_name,
