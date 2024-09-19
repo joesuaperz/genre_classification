@@ -33,6 +33,9 @@ def go(args):
 
     filename = "processed_data.csv"
     df.to_csv(filename)
+    print(df.notna().desc)
+    df = df.dropna()
+    print(df.desc)
 
     artifact = wandb.Artifact(
         name=args.artifact_name,
