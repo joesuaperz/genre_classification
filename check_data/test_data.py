@@ -5,7 +5,7 @@ import pandas as pd
 def test_column_presence_and_type(data):
 
     # Disregard the reference dataset
-    _, data = data
+    #_, data = data
 
     required_columns = {
         "time_signature": pd.api.types.is_integer_dtype,
