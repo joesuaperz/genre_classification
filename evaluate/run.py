@@ -40,17 +40,40 @@ def go(args):
 
     logger.info("Computing confusion matrix")
     fig_cm, sub_cm = plt.subplots(figsize=(10, 10))
-    plot_confusion_matrix(
-        pipe,
-        X_test[used_columns],
-        y_test,
+    #plot_confusion_matrix(
+    #    pipe,
+    #    X_test[used_columns],
+    #    y_test,
+    #    ax=sub_cm,
+    #    normalize="true",
+    #    values_format=".1f",
+    #    xticks_rotation=90,
+    #)
+    #fig_cm.tight_layout()
+
+    # CODE TAKEN FROM exercise_13
+    y_pred = pipe.predict(X_test)
+
+    cm = confusion_matrix(
+                y_true=y_test,
+                y_pred=y_pred,
+                labels=pipe["classifier"].classes_,
+                normalize="true"
+            )
+
+    disp  = ConfusionMatrixDisplay(
+                    confusion_matrix=cm,
+                    display_labels=pipe["classifier"].classes_
+                )
+
+    disp.plot(
         ax=sub_cm,
-        normalize="true",
         values_format=".1f",
         xticks_rotation=90,
     )
+    
     fig_cm.tight_layout()
-
+    #########################################    
     run.log(
         {
             "confusion_matrix": wandb.Image(fig_cm)
