@@ -25,7 +25,6 @@ def test_column_presence_and_type(data):
     }
 
     # Check column presence
-    print(data.shape)
     assert set(data.columns.values).issuperset(set(required_columns.keys()))
 
     for col_name, format_verification_funct in required_columns.items():
